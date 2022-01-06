@@ -1,0 +1,8 @@
+entity\User.class
+ejb\UserBean.class
+entity\Product.class
+entity\Orders.class
+com\pos\nextgenpos\JAXRSConfiguration.class
+entity\OrderItem.class
+util\PasswordUtil.class
+com\pos\nextgenpos\resources\JavaEE8Resource.class
