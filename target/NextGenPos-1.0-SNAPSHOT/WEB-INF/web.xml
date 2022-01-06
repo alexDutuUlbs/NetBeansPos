@@ -5,14 +5,4 @@
             30
         </session-timeout>
     </session-config>
-    <ejb-local-ref>
-        <ejb-ref-name>userBean</ejb-ref-name>
-        <ejb-ref-type>Session</ejb-ref-type>
-        <ejb-link>#UserBean</ejb-link>
-    </ejb-local-ref>
-    <ejb-local-ref>
-        <ejb-ref-name>userBean1</ejb-ref-name>
-        <ejb-ref-type>Session</ejb-ref-type>
-        <ejb-link>#UserBean</ejb-link>
-    </ejb-local-ref>
 </web-app>
