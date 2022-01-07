@@ -18,6 +18,7 @@ entity\User.class
 ejb\ProductBean.class
 ejb\UserBean.class
 entity\Product.class
+servlet\Logout.class
 com\pos\nextgenpos\JAXRSConfiguration.class
 servlet\Return.class
 converter\UserDetails.class

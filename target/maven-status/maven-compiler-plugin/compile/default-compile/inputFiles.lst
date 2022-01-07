@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 E:\java projects netbeans\NetBeansPos\src\main\java\converter\ProductDetails.java
 E:\java projects netbeans\NetBeansPos\src\main\java\entity\OrderItem.java
 E:\java projects netbeans\NetBeansPos\src\main\java\converter\OrderDetails.java
@@ -18,35 +17,10 @@ E:\java projects netbeans\NetBeansPos\src\main\java\util\PasswordUtil.java
 E:\java projects netbeans\NetBeansPos\src\main\java\com\pos\nextgenpos\resources\JavaEE8Resource.java
 E:\java projects netbeans\NetBeansPos\src\main\java\servlet\AddProduct.java
 E:\java projects netbeans\NetBeansPos\src\main\java\ejb\UserBean.java
+E:\java projects netbeans\NetBeansPos\src\main\java\servlet\Logout.java
 E:\java projects netbeans\NetBeansPos\src\main\java\servlet\Products.java
 E:\java projects netbeans\NetBeansPos\src\main\java\ejb\ProductBean.java
 E:\java projects netbeans\NetBeansPos\src\main\java\servlet\Customers.java
 E:\java projects netbeans\NetBeansPos\src\main\java\entity\Orders.java
 E:\java projects netbeans\NetBeansPos\src\main\java\servlet\AddCustomer.java
 E:\java projects netbeans\NetBeansPos\src\main\java\servlet\home.java
-=======
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Products.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\ejb\ProductBean.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\entity\Product.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Dashboard.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\com\pos\nextgenpos\JAXRSConfiguration.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\entity\Orders.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\entity\User.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\EditProfile.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\AddProduct.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\ejb\OrdersBean.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Orders.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Customers.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\converter\OrderDetails.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\converter\ProductDetails.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\com\pos\nextgenpos\resources\JavaEE8Resource.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\util\PasswordUtil.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\AddCustomer.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\ejb\UserBean.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\EditUser.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\entity\OrderItem.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\home.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Return.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\converter\UserDetails.java
-C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\NewOrder.java
->>>>>>> alex

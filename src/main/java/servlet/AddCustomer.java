@@ -8,23 +8,24 @@ package servlet;
 import ejb.UserBean;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.annotation.security.DeclareRoles;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author adutu
- */
+@DeclareRoles({"AdminRole", "ClientRole"})
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole"}))
 @WebServlet(name = "AddCustomer", urlPatterns = {"/AddCustomer"})
 public class AddCustomer extends HttpServlet {
 
     @EJB
     UserBean userBean;
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,7 +43,7 @@ public class AddCustomer extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddCustomers</title>");            
+            out.println("<title>Servlet AddCustomers</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AddCustomers at " + request.getContextPath() + "</h1>");
@@ -77,12 +78,12 @@ public class AddCustomer extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String username=request.getParameter("username");
-       String password=request.getParameter("password");
-       String email=request.getParameter("email");
-       String position = request.getParameter("position");
-       userBean.addUser(email, username, password, position);
-       response.sendRedirect(request.getContextPath()+"/Customers");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        String position = request.getParameter("position");
+        userBean.addUser(email, username, password, position);
+        response.sendRedirect(request.getContextPath() + "/Customers");
     }
 
     /**

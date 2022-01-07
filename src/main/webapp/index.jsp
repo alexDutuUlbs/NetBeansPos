@@ -26,8 +26,9 @@
                                     <input type="password" class="form-control" id="password" placeholder="Password" name="j_password">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Login</button>
-
                             </form>
+                            <hr class="separator">
+                            <a class="btn btn-primary" href="${pageContext.request.contextPath}/Dashboard" role="button">Visit</a>
                         </div>
                     </div>
                 </div>
