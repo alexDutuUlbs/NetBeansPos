@@ -5,10 +5,15 @@
 package ejb;
 
 import entity.User;
+import converter.UserDetails;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
+import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import util.PasswordUtil;
 
 /**
@@ -38,6 +43,28 @@ public class UserBean {
         user.setPassword(shaPassword);
 
         em.persist(user);
+    }
+    
+    public List<UserDetails> getAllUsers(){
+        try {
+            Query query = em.createQuery("SELECT u FROM User u");
+            List<User> users = (List<User>) query.getResultList();
+            return userDetailsConverter(users);
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
+    }
+    
+    private List<UserDetails> userDetailsConverter(List<User> users){
+         List<UserDetails> detailsList = new ArrayList<>();
+        for(User user : users){
+            UserDetails userDetails = new UserDetails(user.getId(),
+            user.getEmail(),
+            user.getUsername(),
+            user.getPassword());
+        detailsList.add(userDetails);
+        }
+        return detailsList;
     }
 
 }
