@@ -5,7 +5,7 @@
     <link re="stylesheet" href="${pageContext.request.contextPath}/style/custom_table.css">
     <script src="${pageContext.request.contextPath}/js/custom_table.js"></script>
 </head>
-<t:pageTemplate pageTitle="Returns" template="return-temp">
+<t:pageTemplate pageTitle="Returns">
     <div class="container-lg">
     <div class="row">
         <div class="col-4">

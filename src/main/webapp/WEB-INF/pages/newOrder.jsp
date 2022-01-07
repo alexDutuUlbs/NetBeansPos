@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<t:pageTemplate pageTitle="New Order" template="newOrder-temp">
+<t:pageTemplate pageTitle="New Order">
     <div class="container-lg">
     <div class="row">
         <div class="col-4">

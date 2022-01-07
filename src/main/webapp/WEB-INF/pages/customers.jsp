@@ -6,7 +6,7 @@
     <link re="stylesheet" href="${pageContext.request.contextPath}/style/custom_table.css">
     <script src="${pageContext.request.contextPath}/js/custom_table.js"></script>
 </head>
-<t:pageTemplate pageTitle="Customers" template="customers-temp">
+<t:pageTemplate pageTitle="Customers">
     <table class="table table-dark table-striped">
         <thead>
         <tr>
