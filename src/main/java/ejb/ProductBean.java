@@ -8,7 +8,6 @@ package ejb;
 import converter.ProductDetails;
 import entity.Product;
 import entity.Product_;
-import entity.User;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;

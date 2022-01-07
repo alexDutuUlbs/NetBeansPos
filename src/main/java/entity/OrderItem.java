@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class OrderItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -67,7 +67,7 @@ public class OrderItem implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.id);
+        hash = 43 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -88,8 +88,6 @@ public class OrderItem implements Serializable {
         }
         return true;
     }
-
-    
 
     @Override
     public String toString() {

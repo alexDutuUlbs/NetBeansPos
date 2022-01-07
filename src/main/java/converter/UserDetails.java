@@ -5,8 +5,8 @@
  */
 package converter;
 
-
 public class UserDetails {
+
     private Integer id;
 
     private String email;
@@ -15,11 +15,14 @@ public class UserDetails {
 
     private String password;
 
-    public UserDetails(Integer id, String email, String username, String password) {
+    private String position;
+
+    public UserDetails(Integer id, String email, String username, String password, String position) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.position = position;
     }
 
     public Integer getId() {
@@ -37,6 +40,9 @@ public class UserDetails {
     public String getPassword() {
         return password;
     }
-    
-    
+
+    public String getPosition() {
+        return position;
+    }
+
 }

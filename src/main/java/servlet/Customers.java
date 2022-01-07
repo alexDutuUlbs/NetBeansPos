@@ -1,7 +1,6 @@
 package servlet;
 
 import ejb.UserBean;
-import entity.User;
 import converter.UserDetails;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -9,12 +8,11 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.inject.Inject;
 
 @WebServlet(name = "Customers", value = "/Customers")
 public class Customers extends HttpServlet {
     
-    @Inject
+    @EJB
     UserBean userBean;
     
     @Override

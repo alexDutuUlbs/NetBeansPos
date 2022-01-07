@@ -33,7 +33,7 @@ public class UserBean {
         return em.find(User.class, id);
     }
 
-    public void addUser(String email, String username, String password) {
+    public void addUser(String email, String username, String password, String position) {
         LOG.info("addUser");
 
         User user = new User();
@@ -41,6 +41,7 @@ public class UserBean {
         user.setUsername(username);
         String shaPassword = PasswordUtil.convertToSha256(password);
         user.setPassword(shaPassword);
+        user.setPosition(position);
 
         em.persist(user);
     }
@@ -62,13 +63,14 @@ public class UserBean {
             UserDetails userDetails = new UserDetails(user.getId(),
                     user.getEmail(),
                     user.getUsername(),
-                    user.getPassword());
+                    user.getPassword(),
+                    user.getPosition());
             detailsList.add(userDetails);
         }
         return detailsList;
     }
 
-    public void deleteUser(User user){
+    public void deleteUser(User user) {
         LOG.info("deleteUser");
         user = em.merge(user);
         em.remove(user);
