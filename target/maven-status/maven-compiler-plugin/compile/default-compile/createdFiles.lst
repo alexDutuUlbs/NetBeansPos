@@ -1,4 +1,4 @@
-NewServlet.class
+servlet\AddCustomer.class
 converter\ProductDetails.class
 servlet\NewOrder.class
 servlet\Orders.class
