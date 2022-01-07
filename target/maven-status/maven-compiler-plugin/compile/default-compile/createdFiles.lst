@@ -3,6 +3,7 @@ servlet\AddCustomer.class
 entity\OrderItem_.class
 converter\ProductDetails.class
 servlet\EditUser.class
+servlet\Login.class
 entity\Product_.class
 servlet\NewOrder.class
 servlet\Orders.class
