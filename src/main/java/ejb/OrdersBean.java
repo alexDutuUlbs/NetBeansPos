@@ -5,6 +5,7 @@
  */
 package ejb;
 
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,8 +17,9 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class OrdersBean {
 
-   @PersistenceContext
+    private static final Logger LOG = Logger.getLogger(OrdersBean.class.getName());
+
+    @PersistenceContext
     private EntityManager em;
-   
-   
+
 }

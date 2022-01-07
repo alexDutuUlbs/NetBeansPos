@@ -45,9 +45,8 @@ public class Orders implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.id_cashier);
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -64,9 +63,6 @@ public class Orders implements Serializable {
         }
         final Orders other = (Orders) obj;
         if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.id_cashier, other.id_cashier)) {
             return false;
         }
         return true;

@@ -24,71 +24,50 @@ public class AddProduct extends HttpServlet {
 
     @EJB
     ProductBean productBean;
-    
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddProduct</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddProduct at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         request.getRequestDispatcher("/WEB-INF/pages/addProduct.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/addProduct.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name=request.getParameter("productName");
-        Double price=Double.parseDouble(request.getParameter("productPrice"));
-         Integer quantity=Integer.parseInt(request.getParameter("productQuantity"));
-        productBean.addProduct(name, quantity, price);
-         response.sendRedirect(request.getContextPath()+"/Products");
+        String name = request.getParameter("productName");
+        Double price = Double.parseDouble(request.getParameter("productPrice"));
+        Integer quantity = Integer.parseInt(request.getParameter("productQuantity"));
+        if (productBean.productNameExist(name)) {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
+            out.println("<div class=\"modal\" tabindex=\"-1\" role=\"dialog\">\n"
+                    + "  <div class=\"modal-dialog\" role=\"document\">\n"
+                    + "    <div class=\"modal-content\">\n"
+                    + "      <div class=\"modal-header\">\n"
+                    + "        <h5 class=\"modal-title\">Modal title</h5>\n"
+                    + "        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n"
+                    + "          <span aria-hidden=\"true\">&times;</span>\n"
+                    + "        </button>\n"
+                    + "      </div>\n"
+                    + "      <div class=\"modal-body\">\n"
+                    + "        <p>Modal body text goes here.</p>\n"
+                    + "      </div>\n"
+                    + "      <div class=\"modal-footer\">\n"
+                    + "        <button type=\"button\" class=\"btn btn-primary\">Save changes</button>\n"
+                    + "        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n"
+                    + "      </div>\n"
+                    + "    </div>\n"
+                    + "  </div>\n"
+                    + "</div>");
+            request.getRequestDispatcher("/WEB-INF/pages/addProduct.jsp").forward(request, response);
+            out.close();
+        } else {
+            productBean.addProduct(name, quantity, price);
+            response.sendRedirect(request.getContextPath() + "/Products");
+        }
+
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

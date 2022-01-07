@@ -7,14 +7,21 @@ package ejb;
 
 import converter.ProductDetails;
 import entity.Product;
+import entity.Product_;
 import entity.User;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -23,16 +30,34 @@ import javax.persistence.Query;
 @Stateless
 public class ProductBean {
 
+    private static final Logger LOG = Logger.getLogger(ProductBean.class.getName());
+
     @PersistenceContext
     private EntityManager em;
-    
-    public ProductDetails getUserById(Integer id) {
-        //LOG.info("findUserById");
+
+    public ProductDetails getProductById(Integer id) {
+        LOG.info("findUserById");
         return convertProduct(em.find(Product.class, id));
     }
 
+    public boolean productNameExist(String productName) {
+        LOG.info("productNameExist");
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<Product> criteria = builder.createQuery(Product.class);
+        Root<Product> from = criteria.from(Product.class);
+        criteria.select(from);
+        criteria.where(builder.equal(from.get(Product_.name), productName));
+        TypedQuery<Product> typed = em.createQuery(criteria);
+        try {
+            Product product = typed.getSingleResult();
+            return true;
+        } catch (final NoResultException nre) {
+            return false;
+        }
+    }
+
     public void addProduct(String name, Integer quantity, Double price) {
-        //LOG.info("addUser");
+        LOG.info("addProduct");
 
         Product product = new Product();
         product.setName(name);
@@ -41,8 +66,9 @@ public class ProductBean {
 
         em.persist(product);
     }
-    
-    public List<ProductDetails> getAllProducts(){
+
+    public List<ProductDetails> getAllProducts() {
+        LOG.info("getAllProducts");
         try {
             Query query = em.createQuery("SELECT u FROM Product u");
             List<Product> product = (List<Product>) query.getResultList();
@@ -51,19 +77,19 @@ public class ProductBean {
             throw new EJBException(ex);
         }
     }
-    
+
     private List<ProductDetails> productDetailsConverter(List<Product> products) {
-        List<ProductDetails> detailsList=new ArrayList<>();
-        for(Product prod: products){
-            ProductDetails productDetails=new ProductDetails(prod.getId(), prod.getName(), prod.getQuantity(), prod.getPrice());
+        List<ProductDetails> detailsList = new ArrayList<>();
+        for (Product prod : products) {
+            ProductDetails productDetails = new ProductDetails(prod.getId(), prod.getName(), prod.getQuantity(), prod.getPrice());
             detailsList.add(productDetails);
         }
         return detailsList;
     }
 
     private ProductDetails convertProduct(Product product) {
-       ProductDetails productDetails=new ProductDetails(product.getId(), product.getName(), product.getQuantity(), product.getPrice());
-       return productDetails;
+        ProductDetails productDetails = new ProductDetails(product.getId(), product.getName(), product.getQuantity(), product.getPrice());
+        return productDetails;
     }
-    
+
 }

@@ -44,8 +44,9 @@ public class UserBean {
 
         em.persist(user);
     }
-    
-    public List<UserDetails> getAllUsers(){
+
+    public List<UserDetails> getAllUsers() {
+        LOG.info("getAllUsers");
         try {
             Query query = em.createQuery("SELECT u FROM User u");
             List<User> users = (List<User>) query.getResultList();
@@ -54,17 +55,22 @@ public class UserBean {
             throw new EJBException(ex);
         }
     }
-    
-    private List<UserDetails> userDetailsConverter(List<User> users){
-         List<UserDetails> detailsList = new ArrayList<>();
-        for(User user : users){
+
+    private List<UserDetails> userDetailsConverter(List<User> users) {
+        List<UserDetails> detailsList = new ArrayList<>();
+        for (User user : users) {
             UserDetails userDetails = new UserDetails(user.getId(),
-            user.getEmail(),
-            user.getUsername(),
-            user.getPassword());
-        detailsList.add(userDetails);
+                    user.getEmail(),
+                    user.getUsername(),
+                    user.getPassword());
+            detailsList.add(userDetails);
         }
         return detailsList;
     }
 
+    public void deleteUser(User user){
+        LOG.info("deleteUser");
+        user = em.merge(user);
+        em.remove(user);
+    }
 }
