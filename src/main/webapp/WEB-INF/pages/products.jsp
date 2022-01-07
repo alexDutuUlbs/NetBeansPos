@@ -4,7 +4,7 @@
 <head>
 
     <link re="stylesheet" href="${pageContext.request.contextPath}/style/custom_table.css">
-    <script src="${pageContext.request.contextPath}/js/custom_table.js"></script>
+    <script src="WEB-INF/js/custom_table.js"></script>
 </head>
 <t:pageTemplate pageTitle="Products">
     <table class="table table-dark table-striped">
