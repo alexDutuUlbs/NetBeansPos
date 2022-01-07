@@ -1,6 +1,7 @@
 E:\java projects netbeans\NextGenPos\src\main\java\servlet\Products.java
 E:\java projects netbeans\NextGenPos\src\main\java\servlet\AddCustomer.java
 E:\java projects netbeans\NextGenPos\src\main\java\util\PasswordUtil.java
+E:\java projects netbeans\NextGenPos\src\main\java\converter\OrderDetails.java
 E:\java projects netbeans\NextGenPos\src\main\java\ejb\UserBean.java
 E:\java projects netbeans\NextGenPos\src\main\java\entity\Product.java
 E:\java projects netbeans\NextGenPos\src\main\java\servlet\AddProduct.java
@@ -12,7 +13,9 @@ E:\java projects netbeans\NextGenPos\src\main\java\ejb\OrdersBean.java
 E:\java projects netbeans\NextGenPos\src\main\java\servlet\NewOrder.java
 E:\java projects netbeans\NextGenPos\src\main\java\entity\OrderItem.java
 E:\java projects netbeans\NextGenPos\src\main\java\servlet\Return.java
+E:\java projects netbeans\NextGenPos\src\main\java\servlet\EditProfile.java
 E:\java projects netbeans\NextGenPos\src\main\java\com\pos\nextgenpos\JAXRSConfiguration.java
+E:\java projects netbeans\NextGenPos\src\main\java\servlet\EditUser.java
 E:\java projects netbeans\NextGenPos\src\main\java\com\pos\nextgenpos\resources\JavaEE8Resource.java
 E:\java projects netbeans\NextGenPos\src\main\java\converter\ProductDetails.java
 E:\java projects netbeans\NextGenPos\src\main\java\servlet\home.java
