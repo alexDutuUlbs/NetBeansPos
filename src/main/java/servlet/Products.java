@@ -18,7 +18,6 @@ public class Products extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<ProductDetails> products=productBean.getAllProducts();
-        System.out.println(products);
         request.setAttribute("products", products);
         request.getRequestDispatcher("/WEB-INF/pages/products.jsp").forward(request, response);
     }

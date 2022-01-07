@@ -7,7 +7,6 @@ package ejb;
 
 import converter.ProductDetails;
 import entity.Product;
-import entity.Product_;
 import entity.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,19 +40,20 @@ public class ProductBean {
     }
 
     public boolean productNameExist(String productName) {
-        LOG.info("productNameExist");
-        CriteriaBuilder builder = em.getCriteriaBuilder();
-        CriteriaQuery<Product> criteria = builder.createQuery(Product.class);
-        Root<Product> from = criteria.from(Product.class);
-        criteria.select(from);
-        criteria.where(builder.equal(from.get(Product_.name), productName));
-        TypedQuery<Product> typed = em.createQuery(criteria);
-        try {
-            Product product = typed.getSingleResult();
-            return true;
-        } catch (final NoResultException nre) {
-            return false;
-        }
+//        LOG.info("productNameExist");
+//        CriteriaBuilder builder = em.getCriteriaBuilder();
+//        CriteriaQuery<Product> criteria = builder.createQuery(Product.class);
+//        Root<Product> from = criteria.from(Product.class);
+//        criteria.select(from);
+//        criteria.where(builder.equal(from.get(Product_.name), productName));
+//        TypedQuery<Product> typed = em.createQuery(criteria);
+//        try {
+//            Product product = typed.getSingleResult();
+//            return true;
+//        } catch (final NoResultException nre) {
+//            return false;
+//        }
+return false;
     }
 
     public void addProduct(String name, Integer quantity, Double price) {

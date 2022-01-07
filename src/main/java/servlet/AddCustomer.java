@@ -79,7 +79,7 @@ public class AddCustomer extends HttpServlet {
             throws ServletException, IOException {
        String username=request.getParameter("username");
        String password=request.getParameter("password");
-       String email=request.getParameter("password");
+       String email=request.getParameter("email");
        userBean.addUser(email, username, password);
        response.sendRedirect(request.getContextPath()+"/Customers");
     }
