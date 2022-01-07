@@ -8,4 +8,18 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>jdbcRealm</realm-name>
+        <form-login-config>
+            <form-login-page>/Dashboard</form-login-page>
+            <form-error-page>/Login</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <role-name>AdminRole</role-name>
+    </security-role>
+    <security-role>
+        <role-name>ClientRole</role-name>
+    </security-role>
 </web-app>
