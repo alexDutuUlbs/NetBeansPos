@@ -34,6 +34,8 @@ public class DeleteOrder extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Integer orderId = Integer.parseInt(request.getParameter("orderIdConfirm"));
+        System.out.println("console-log-delete");
+        System.out.println(orderId);
         ordersBean.returnOrder(orderId);
         response.sendRedirect(request.getContextPath() + "/Orders");
     }
