@@ -17,6 +17,7 @@ servlet\Products.class
 entity\Orders_.class
 util\PasswordUtil.class
 entity\User.class
+servlet\Pending.class
 ejb\ProductBean.class
 ejb\UserBean.class
 entity\Product.class
@@ -24,6 +25,7 @@ converter\ProductOrderJoin.class
 servlet\Logout.class
 com\pos\nextgenpos\JAXRSConfiguration.class
 servlet\Return.class
+servlet\ValidateUser.class
 converter\UserDetails.class
 converter\OrderDetails.class
 ejb\OrdersBean.class
