@@ -24,6 +24,7 @@ entity\Product.class
 converter\ProductOrderJoin.class
 servlet\Logout.class
 com\pos\nextgenpos\JAXRSConfiguration.class
+servlet\DeleteOrder.class
 servlet\Return.class
 servlet\ValidateUser.class
 converter\UserDetails.class

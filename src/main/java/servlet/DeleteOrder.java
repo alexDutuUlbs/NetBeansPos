@@ -5,44 +5,40 @@
  */
 package servlet;
 
-import ejb.UserBean;
+import ejb.OrdersBean;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.annotation.security.DeclareRoles;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.HttpConstraint;
-import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
-//@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole","ManagerRole"}))
-@WebServlet(name = "AddCustomer", urlPatterns = {"/AddCustomer"})
-public class AddCustomer extends HttpServlet {
-
+/**
+ *
+ * @author adutu
+ */
+@WebServlet(name = "DeleteOrder", urlPatterns = {"/DeleteOrder"})
+public class DeleteOrder extends HttpServlet {
+    
     @EJB
-    UserBean userBean;
-
+    OrdersBean ordersBean;
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/pages/addUser.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        String position = "INVALID";
-        userBean.addUser(email, username, password, position);
-        response.sendRedirect(request.getContextPath() + "/Customers");
+        Integer orderId = Integer.parseInt(request.getParameter("orderIdConfirm"));
+        ordersBean.returnOrder(orderId);
+        response.sendRedirect(request.getContextPath() + "/Orders");
     }
 
+ 
     @Override
     public String getServletInfo() {
         return "Short description";
