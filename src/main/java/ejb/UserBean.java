@@ -22,30 +22,32 @@ import util.PasswordUtil;
  */
 @Stateless
 public class UserBean {
-    
+
     private static final Logger LOG = Logger.getLogger(UserBean.class.getName());
-    
+
     @PersistenceContext
     private EntityManager em;
-    
-    public User getUserById(Integer id) {
+
+    public UserDetails getUserById(Integer id) {
         LOG.info("findUserById");
-        return em.find(User.class, id);
+        User user = em.find(User.class, id);
+        UserDetails userDetails = new UserDetails(user);
+        return userDetails;
     }
-    
+
     public void addUser(String email, String username, String password, String position) {
         LOG.info("addUser");
-        
+
         User user = new User();
         user.setEmail(email);
         user.setUsername(username);
         String shaPassword = PasswordUtil.convertToSha256(password);
         user.setPassword(shaPassword);
         user.setPosition(position);
-        
+
         em.persist(user);
     }
-    
+
     public List<UserDetails> getAllUsers() {
         LOG.info("getAllUsers");
         try {
@@ -56,7 +58,7 @@ public class UserBean {
             throw new EJBException(ex);
         }
     }
-    
+
     private List<UserDetails> userDetailsConverter(List<User> users) {
         List<UserDetails> detailsList = new ArrayList<>();
         for (User user : users) {
@@ -69,18 +71,15 @@ public class UserBean {
         }
         return detailsList;
     }
-    
+
     public void deleteUser(User user) {
         LOG.info("deleteUser");
         user = em.merge(user);
         em.remove(user);
     }
-    
+
     public void updateUser(String userId, String username, String password, String email, String position) {
         LOG.info("updateUser");
-        LOG.info("----------");
-        LOG.info(username);
-        LOG.info(userId);
         User user = em.find(User.class, Integer.parseInt(userId));
         user.setEmail(email);
         user.setPosition(position);

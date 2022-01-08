@@ -13,7 +13,7 @@
         <label for="username">Username</label>
         <input type ="text" class="form-control" name="username" id="username" placeholder="Username" required value="${user.username}"/>
         <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required value="${user.password}"/>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required value=""/>
         <label for="email">Email</label>
         <input type="email" class="form-control" name="email" id="email" placeholder="Email" required value="${user.email}"/>
         <label for="position">Position</label>
@@ -21,9 +21,9 @@
             <option value="">Chose...</option>
             <option value="CLIENT">Client</option>
             <option value="ADMINISTRATOR">Administrator</option>
-            <option value="Manager">Manager</option>
+            <option value="MANAGER">Manager</option>
         </select>
-        <input type="text" readonly name="user_id" id="user_id" value="${user.username}" placeholder="${user.username}"/>
+        <input type="hidden" name="user_id" id="user_id" value="${user.id}"/>
         <hr>
         <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
     </form>

@@ -91,4 +91,12 @@ public class ProductBean {
         return productDetails;
     }
 
+    public void updateProduct(int productId, String productName, double price, int quantity) {
+        LOG.info("updateProduct");
+        Product product = em.find(Product.class, productId);
+        product.setName(productName);
+        product.setPrice(price);
+        product.setQuantity(quantity);
+    }
+
 }

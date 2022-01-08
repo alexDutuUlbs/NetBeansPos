@@ -3,10 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 
-    
+
 </head>
 <t:pageTemplate pageTitle="Orders">
-
     <div class="container-lg">
         <h1>Test</h1>
         <div id="accordion">
@@ -19,7 +18,6 @@
                             </button>
                         </h5>
                     </div>
-
                     <div id="collapse_id${orderid.id}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
                             <c:forEach var="orderItem" items="${orderList}" varStatus="status">
@@ -29,16 +27,11 @@
                     </div>
                 </div>
             </c:forEach>
-
         </div>
-
     </div>
     <script>
         $(document).ready(function () {
-
             $('.collapse').collapse()
         });
-        
     </script>
-
 </t:pageTemplate>

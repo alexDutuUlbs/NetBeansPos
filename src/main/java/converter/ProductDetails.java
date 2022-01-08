@@ -5,6 +5,8 @@
  */
 package converter;
 
+import entity.Product;
+
 /**
  *
  * @author adutu
@@ -23,6 +25,13 @@ public class ProductDetails {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
+    }
+    
+    public ProductDetails(Product product) {
+        this.id = product.getId();
+        this.name = product.getName();
+        this.quantity = product.getQuantity();
+        this.price = product.getPrice();
     }
 
     public Integer getId() {

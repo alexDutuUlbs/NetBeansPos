@@ -4,6 +4,7 @@
  */
 package servlet;
 
+import converter.UserDetails;
 import ejb.UserBean;
 import java.io.IOException;
 import javax.annotation.security.DeclareRoles;
@@ -31,6 +32,8 @@ public class EditUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        UserDetails user = userBean.getUserById(Integer.parseInt(request.getParameter("id")));
+        request.setAttribute("user", user);
         request.getRequestDispatcher("/WEB-INF/pages/editUser.jsp").forward(request, response);
     }
 
@@ -41,7 +44,7 @@ public class EditUser extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
         String position = request.getParameter("position");
-        String userId = request.getParameter("id");
+        String userId = request.getParameter("user_id");
 
         userBean.updateUser(userId, username, password, email, position);
 
