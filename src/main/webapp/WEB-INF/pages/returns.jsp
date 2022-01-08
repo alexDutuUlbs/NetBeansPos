@@ -51,8 +51,8 @@
                     </tfoot>
                 </table>
                 <c:if test="${pageContext.request.getAttribute('activated')}">
-                    <form action="${pageContext.request.contextPath}/DeleteOrder">
-                        <input type="number" id="orderIdConfirm" name="fav_language" value="Confirm order id">
+                    <form action="${pageContext.request.contextPath}/DeleteOrder" method="POST">
+                        <input type="number" id="orderIdConfirm" name="orderIdConfirm" value="Confirm order id">
                         <button name="submit" type="submit" class="btn btn-primary">Return Order</button>
                     </form>
                 </c:if>
