@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import entity.Orders;
+import entity.Product;
 import entity.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,12 +72,16 @@ public class OrdersBean {
     }
 
     public boolean addNewOrder(List<OrderItemDetails> orderList) {
+        
+         LOG.info("addNewOrder");
+        
         OrderItem order;
         for (OrderItemDetails orderItem : orderList) {
             order = new OrderItem();
             order.setIdOrder(orderItem.getIdOrder());
             order.setIdProduct(orderItem.getIdProduct());
             order.setQuantity(orderItem.getQuantity());
+            updateStock(orderItem.getIdProduct(), orderItem.getQuantity());
             try {
                 em.persist(order);
             } catch (Exception e) {
@@ -104,5 +109,10 @@ public class OrdersBean {
             detailsList.add(orderItem);
         }
         return detailsList;
+    }
+
+    private void updateStock(Integer idProduct, Integer quantity) {
+        Product product= em.find(Product.class, idProduct);
+        product.setQuantity(product.getQuantity()-quantity);
     }
 }
