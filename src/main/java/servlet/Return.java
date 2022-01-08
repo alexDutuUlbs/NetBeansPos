@@ -21,6 +21,6 @@ public class Return extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer orderId=Integer.parseInt(request.getParameter("orderId"));
-        if(ordersBean.findUserById())
+        //if(ordersBean.findUserById())
     }
 }

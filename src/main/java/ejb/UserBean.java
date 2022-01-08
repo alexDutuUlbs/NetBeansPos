@@ -6,14 +6,20 @@ package ejb;
 
 import entity.User;
 import converter.UserDetails;
+import entity.User_;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import util.PasswordUtil;
 
 /**
@@ -86,5 +92,21 @@ public class UserBean {
         user.setUsername(username);
         String shaPassword = PasswordUtil.convertToSha256(password);
         user.setPassword(shaPassword);
+    }
+    
+    public Integer getUserIdByName(String userName){
+         LOG.info("getUserIdByName");
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<User> criteria = builder.createQuery(User.class);
+        Root<User> from = criteria.from(User.class);
+        criteria.select(from);
+        criteria.where(builder.equal(from.get(User_.name), userName));
+        TypedQuery<User> typed = em.createQuery(criteria);
+        try {
+            User user = typed.getSingleResult();
+            return user.getId();
+        } catch (final NoResultException nre) {
+            return null;
+        }
     }
 }

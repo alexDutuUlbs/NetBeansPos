@@ -6,4 +6,5 @@
 
 </head>
 <t:pageTemplate pageTitle="Dashboard">
+    <c:out value="${pageContext.session.getAttribute('userId')}" />
 </t:pageTemplate>
