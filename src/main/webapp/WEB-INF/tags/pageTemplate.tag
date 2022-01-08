@@ -53,7 +53,7 @@
                                     <li class="w-100">
                                         <a href="${pageContext.request.contextPath}/Products" class="nav-link px-0"> <span class="d-none d-sm-inline">Product List</span></a>
                                     </li>
-                                    <c:if test="${pageContext.request.isUserInRole('ClientRole')}">
+                                    <c:if test="${pageContext.request.isUserInRole('AdminRole')}">
                                         <li>
                                             <a href="${pageContext.request.contextPath}/AddProduct" class="nav-link px-0"> <span class="d-none d-sm-inline">Add Product</span></a>
                                         </li>

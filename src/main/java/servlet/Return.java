@@ -9,10 +9,10 @@ import javax.ejb.EJB;
 
 @WebServlet(name = "Return", value = "/Return")
 public class Return extends HttpServlet {
-    
+
     @EJB
     OrdersBean ordersBean;
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/pages/returns.jsp").forward(request, response);
@@ -20,7 +20,6 @@ public class Return extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer orderId=Integer.parseInt(request.getParameter("orderId"));
-        if(ordersBean.findUserById())
+
     }
 }
