@@ -4,9 +4,13 @@
  */
 package servlet;
 
+import ejb.UserBean;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.annotation.security.DeclareRoles;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +20,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
+@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"ManagerRole"}))
 @WebServlet(name = "EditUser", urlPatterns = {"/EditUser"})
 public class EditUser extends HttpServlet {
+
+    @EJB
+    UserBean userBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -28,7 +37,15 @@ public class EditUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        String position = request.getParameter("position");
+        String userId = request.getParameter("id");
 
+        userBean.updateUser(userId, username, password, email, position);
+
+        response.sendRedirect(request.getContextPath() + "/Customers");
     }
 
     @Override

@@ -11,6 +11,8 @@ entity\User_.class
 servlet\home.class
 entity\Orders.class
 servlet\Customers.class
+servlet\ModifyProduct.class
+converter\OrderItemDetails.class
 servlet\Products.class
 entity\Orders_.class
 util\PasswordUtil.class
@@ -18,6 +20,7 @@ entity\User.class
 ejb\ProductBean.class
 ejb\UserBean.class
 entity\Product.class
+servlet\Logout.class
 com\pos\nextgenpos\JAXRSConfiguration.class
 servlet\Return.class
 converter\UserDetails.class

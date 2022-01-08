@@ -4,11 +4,17 @@
   <security-role-mapping>
     <role-name>AdminRole</role-name>
     <group-name>ADMINISTRATOR</group-name>
+    <group-name>MANAGER</group-name>
   </security-role-mapping>
   <security-role-mapping>
     <role-name>ClientRole</role-name>
     <group-name>ADMINISTRATOR</group-name>
     <group-name>CLIENT</group-name>
+    <group-name>MANAGER</group-name>
+  </security-role-mapping>
+  <security-role-mapping>
+    <role-name>ManagerRole</role-name>
+    <group-name>MANAGER</group-name>
   </security-role-mapping>
   <class-loader delegate="true"/>
   <jsp-config>

@@ -9,5 +9,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <t:pageTemplate pageTitle="Edit User">
-
+    <form class="needs-validation w-25" novalidate method="POST" action="${pageContext.request.contextPath}/EditUser">
+        <label for="username">Username</label>
+        <input type ="text" class="form-control" name="username" id="username" placeholder="Username" required value="${user.username}"/>
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required value="${user.password}"/>
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required value="${user.email}"/>
+        <label for="position">Position</label>
+        <select class="custom-select d-block w-100" name="position" id="position" required>
+            <option value="">Chose...</option>
+            <option value="CLIENT">Client</option>
+            <option value="ADMINISTRATOR">Administrator</option>
+            <option value="Manager">Manager</option>
+        </select>
+        <input type="text" readonly name="user_id" id="user_id" value="${user.username}" placeholder="${user.username}"/>
+        <hr>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
+    </form>
 </t:pageTemplate>

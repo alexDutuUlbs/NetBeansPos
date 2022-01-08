@@ -5,10 +5,19 @@
  */
 package ejb;
 
+import converter.OrderDetails;
+import converter.OrderItemDetails;
+import entity.OrderItem;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import entity.Orders;
+import entity.User;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ejb.EJBException;
+import javax.persistence.Query;
 
 /**
  *
@@ -21,5 +30,79 @@ public class OrdersBean {
 
     @PersistenceContext
     private EntityManager em;
+    
+    public List<OrderDetails> getAllOrderIds(){
+        List<OrderDetails> orderList;
+        try {
+            Query query = em.createQuery("SELECT u FROM Orders u");
+            List<Orders> orders = (List<Orders>) query.getResultList();
+            orderList = ordersDetailsConverter(orders);
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
+        return orderList;
+    }
+    
+    public List<OrderItemDetails> getAllOrderItems(){
+        List<OrderItemDetails> orderList;
+        try {
+            Query query = em.createQuery("SELECT u FROM OrderItem u");
+            List<OrderItem> orders = (List<OrderItem>) query.getResultList();
+            orderList = orderItemDetailsConverter(orders);
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
+        return orderList;
+    }
 
+    public Integer newOrderId(Integer idCashier) {
+        Orders order = new Orders();
+        order.setId_cashier(idCashier);
+
+        em.persist(order);
+        List<OrderDetails> orderList=getAllOrderIds();
+        Integer orderId = 0;
+        for (OrderDetails orderItem : orderList) {
+            orderId = orderItem.getId();
+        }
+
+        System.out.println("ORDER ID IS:" + orderId);
+        return orderId;
+    }
+
+    public boolean addNewOrder(List<OrderItemDetails> orderList) {
+        OrderItem order;
+        for (OrderItemDetails orderItem : orderList) {
+            order = new OrderItem();
+            order.setIdOrder(orderItem.getIdOrder());
+            order.setIdProduct(orderItem.getIdProduct());
+            order.setQuantity(orderItem.getQuantity());
+            try {
+                em.persist(order);
+            } catch (Exception e) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private List<OrderDetails> ordersDetailsConverter(List<Orders> orders) {
+        List<OrderDetails> detailsList = new ArrayList<>();
+        OrderDetails orderItem;
+        for (Orders order : orders) {
+            orderItem = new OrderDetails(order.getId(), order.getId_cashier());
+            detailsList.add(orderItem);
+        }
+        return detailsList;
+    }
+
+    private List<OrderItemDetails> orderItemDetailsConverter(List<OrderItem> orders) {
+       List<OrderItemDetails> detailsList = new ArrayList<>();
+        OrderItemDetails orderItem;
+        for (OrderItem order : orders) {
+            orderItem = new OrderItemDetails(order.getId(), order.getIdOrder(), order.getIdProduct(), order.getQuantity());
+            detailsList.add(orderItem);
+        }
+        return detailsList;
+    }
 }
