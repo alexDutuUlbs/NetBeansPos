@@ -38,8 +38,8 @@ public class NewOrder extends HttpServlet {
         
         //System.out.println("orderBean//////////////////////////"+ordersBean.newOrder(1));
         
-        String userId=(String) request.getSession().getAttribute("userId");
-        Integer orderId=ordersBean.newOrderId(Integer.parseInt(userId));       //get user id
+        Integer userId=(Integer) request.getSession().getAttribute("userId");
+        Integer orderId=ordersBean.newOrderId(userId);       //get user id
         
         String orderRaw=request.getParameter("order");
         List<OrderItemDetails> orderList=new ArrayList<>();

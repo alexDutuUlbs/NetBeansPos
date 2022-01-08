@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
-@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole","ManagerRole"}))
+//@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
+//@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole","ManagerRole"}))
 @WebServlet(name = "AddCustomer", urlPatterns = {"/AddCustomer"})
 public class AddCustomer extends HttpServlet {
 
