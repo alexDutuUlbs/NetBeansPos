@@ -18,8 +18,7 @@ public class Dashboard extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.setAttribute("userId", userBean.getUserIdByName(request.getRemoteUser()));
+        request.getSession().setAttribute("userId", userBean.getUserIdByName(request.getRemoteUser()));
         request.getRequestDispatcher("/WEB-INF/pages/dashboard.jsp").forward(request, response);
     }
 

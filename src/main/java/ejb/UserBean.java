@@ -100,7 +100,7 @@ public class UserBean {
         CriteriaQuery<User> criteria = builder.createQuery(User.class);
         Root<User> from = criteria.from(User.class);
         criteria.select(from);
-        criteria.where(builder.equal(from.get(User_.name), userName));
+        criteria.where(builder.equal(from.get(User_.username), userName));
         TypedQuery<User> typed = em.createQuery(criteria);
         try {
             User user = typed.getSingleResult();
