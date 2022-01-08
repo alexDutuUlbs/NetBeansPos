@@ -38,7 +38,7 @@ public class NewOrder extends HttpServlet {
         
         //System.out.println("orderBean//////////////////////////"+ordersBean.newOrder(1));
         
-        Integer orderId=ordersBean.newOrderId(1);
+        Integer orderId=ordersBean.newOrderId(1);       //get user id
         
         String orderRaw=request.getParameter("order");
         List<OrderItemDetails> orderList=new ArrayList<>();
@@ -50,6 +50,7 @@ public class NewOrder extends HttpServlet {
         }
         boolean success=ordersBean.addNewOrder(orderList);
         if(success){
+            
              response.sendRedirect(request.getContextPath() + "/Orders");
         }else{
              response.sendRedirect(request.getContextPath() + "/NewOrder");
