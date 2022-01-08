@@ -6,6 +6,7 @@
 package converter;
 
 import entity.Product;
+import java.util.Objects;
 
 /**
  *
@@ -33,6 +34,10 @@ public class ProductDetails {
         this.quantity = product.getQuantity();
         this.price = product.getPrice();
     }
+    
+    public ProductDetails(Integer id) {
+        this.id = id;
+    }
 
     public Integer getId() {
         return id;
@@ -48,6 +53,31 @@ public class ProductDetails {
 
     public Double getPrice() {
         return price;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProductDetails other = (ProductDetails) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
     
     
