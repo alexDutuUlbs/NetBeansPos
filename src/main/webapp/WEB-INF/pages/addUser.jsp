@@ -22,25 +22,42 @@
                                 </div>
                             </div> 
                             <input id="username" name="username" placeholder="user name" type="text" class="form-control" required="required">
+                            <div class="invalid-feedback">
+                                Username is required.
+                            </div>    
                         </div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="psoition" class="col-4 col-form-label">Position</label> 
                     <div class="col-8">
-                        <input id="position" name="position" placeholder="position" type="text" class="form-control" required="required">
+                        <select id="position" name="position" placeholder="position" class="form-control" required>
+                            <option value="">Chose...</option>
+                            <option value="ADMINISTRATOR">Administrator</option>
+                            <option value="CLIENT">Client</option>
+                            <option value="MANAGER">Manager</option>
+                        </select> 
+                        <div class="invalid-feedback">
+                            Please select a position.
+                        </div>    
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="email" class="col-4 col-form-label">Email</label> 
                     <div class="col-8">
                         <input id="email" name="email" placeholder="email" type="email" class="form-control" required="required">
+                        <div class="invalid-feedback">
+                            Email is required.
+                        </div>    
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="password" class="col-4 col-form-label">Password</label> 
                     <div class="col-8">
                         <input id="password" name="password" placeholder="password" type="password" class="form-control" required="required">
+                        <div class="invalid-feedback">
+                            Password is required.
+                        </div>    
                     </div>
                 </div> 
                 <div class="form-group row">

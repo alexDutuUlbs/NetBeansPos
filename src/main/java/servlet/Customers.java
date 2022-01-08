@@ -10,8 +10,8 @@ import java.util.List;
 import javax.annotation.security.DeclareRoles;
 import javax.ejb.EJB;
 
-@DeclareRoles({"AdminRole", "ClientRole"})
-@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole"}))
+@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole", "ManagerRole"}))
 @WebServlet(name = "Customers", value = "/Customers")
 public class Customers extends HttpServlet {
     

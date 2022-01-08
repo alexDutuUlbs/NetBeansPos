@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
-@DeclareRoles({"AdminRole", "ClientRole"})
-@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole", "ClientRole"}))
+@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole", "ClientRole", "ManagerRole"}))
 @WebServlet(name = "EditProfile", urlPatterns = {"/EditProfile"})
 public class EditProfile extends HttpServlet {
 

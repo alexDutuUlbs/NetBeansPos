@@ -11,6 +11,7 @@ entity\User_.class
 servlet\home.class
 entity\Orders.class
 servlet\Customers.class
+servlet\ModifyProduct.class
 servlet\Products.class
 entity\Orders_.class
 util\PasswordUtil.class
