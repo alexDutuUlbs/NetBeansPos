@@ -98,5 +98,4 @@ public class ProductBean {
         product.setPrice(price);
         product.setQuantity(quantity);
     }
-
 }

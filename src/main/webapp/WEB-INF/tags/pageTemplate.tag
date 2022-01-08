@@ -82,6 +82,11 @@
                                 <span class="d-none d-sm-inline mx-1">${pageContext.request.getRemoteUser()}</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                                <c:if test="${pageContext.request.isUserInRole('ManagerRole')}">
+                                    <li>
+                                        <a class="dropdown-item" href="${pageContext.request.contextPath}/Pending">Pending</a>
+                                    </li>
+                                </c:if>
                                 <li><a class="dropdown-item" href="${pageContext.request.contextPath}/EditProfile">Profile</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
