@@ -33,7 +33,7 @@ public class ValidateUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UserDetails user = userBean.getUserById(Integer.parseInt(request.getParameter("id")));
-        request.setAttribute("user", user);
+        request.setAttribute("userVal", user);
         request.getRequestDispatcher("/WEB-INF/pages/validateUser.jsp").forward(request, response);
     }
 
