@@ -20,18 +20,21 @@
                 <input type="number" id="quantity" name="quantity" min="1" required="required">
                 <button type="button" class="btn btn-dark" id="addToCart">Add to cart</button>
                 <div class="alert alert-primary" role="alert" id="alert" style="visibility:hidden"></div>
-
             </div>
             <div class="col-md-auto" id="orderCart">
-
             </div>
             <div id="subtotal"></div>
+            <div id="rest">
+                <input type="number" id="rest_input">
+                <button id="label_activate">Get Rest</button>
+                <label id="rest_label"></label>
+            </div>
             <form method="POST" action="${pageContext.request.contextPath}/NewOrder">
                 <input type="hidden" id="order" name="order">
-                <button type="submit" class="btn btn-dark">Process order</button>
+                <input type="hidden" id="total" name="total"> 
+                <button type="submit" id="process" class="btn btn-dark">Process order</button>
             </form>
         </div>
-
     </div>
     <script>
         var subtotal = parseFloat(0);
@@ -40,7 +43,7 @@
             var select = document.getElementById('products');
             var id = select.options[select.selectedIndex].id;
             var quantityValue = parseInt(document.getElementById("quantity").value);
-            
+
             if (parseInt(document.getElementById("quantity").getAttribute("max")) < quantityValue || parseInt(document.getElementById("quantity").getAttribute("min")) > quantityValue) {
                 document.getElementById("alert").innerHTML = "Quantity should be less than " + document.getElementById("quantity").getAttribute("max");
                 document.getElementById("alert").style.visibility = 'visible';
@@ -48,14 +51,16 @@
                 document.getElementById("alert").style.visibility = 'hidden';
                 document.getElementById('order').value = document.getElementById('order').value + id + "#" + quantityValue + "#";
                 document.getElementById("orderCart").innerHTML += "<p>" + select.options[select.selectedIndex].innerHTML + " quantity: " + quantityValue + "</p>";
-                subtotal+=productPrice*quantityValue;
-                document.getElementById("subtotal").innerHTML ="<h3>Total= "+subtotal;
+                subtotal += productPrice * quantityValue;
+                document.getElementById("total").value = subtotal;
+                document.getElementById("subtotal").innerHTML = "<h3>Total= " + subtotal;
             }
 
         }
         $(document).ready(function () {
-
+            $("#process").hide();
             $("#products").change(function () {
+                $("#process").hide();
                 productPrice = parseFloat($(this).find('option:selected').data('price'));
                 var id = $(this).children(":selected").attr("id");
                 var value = $(this).children(":selected").attr("value");
@@ -67,6 +72,15 @@
 
             $("#addToCart").click(function () {
                 addProductInOrder();
+            });
+
+            $("#label_activate").click(function () {
+                var rest = parseFloat(document.getElementById("rest_input").value) - subtotal;
+                $("#rest_label").text(rest);
+                if (rest >= 0) {
+                    $("#process").show();
+                }
+
             });
         });
     </script>

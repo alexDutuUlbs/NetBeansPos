@@ -5,12 +5,16 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -21,12 +25,33 @@ import javax.persistence.Table;
 public class Orders implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private Integer id_cashier;
+
+    private Double total;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar date;
+
+    public Calendar getDate() {
+        return date;
+    }
+
+    public void setDate(Calendar date) {
+        this.date = date;
+    }
+    
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
 
     public Integer getId_cashier() {
         return id_cashier;

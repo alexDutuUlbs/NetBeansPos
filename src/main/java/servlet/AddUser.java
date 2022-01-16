@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @DeclareRoles({"AdminRole", "ClientRole", "ManagerRole", "InvalidRole"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole","ManagerRole"}))
-@WebServlet(name = "AddCustomer", urlPatterns = {"/AddCustomer"})
-public class AddCustomer extends HttpServlet {
+@WebServlet(name = "AddUser", urlPatterns = {"/AddUser"})
+public class AddUser extends HttpServlet {
 
     @EJB
     UserBean userBean;
@@ -39,7 +39,7 @@ public class AddCustomer extends HttpServlet {
         String email = request.getParameter("email");
         String position = request.getParameter("position");
         userBean.addUser(email, username, password, position);
-        response.sendRedirect(request.getContextPath() + "/Customers");
+        response.sendRedirect(request.getContextPath() + "/Users");
     }
 
     @Override

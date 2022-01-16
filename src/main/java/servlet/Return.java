@@ -1,5 +1,6 @@
 package servlet;
 
+import converter.OrderDetails;
 import converter.OrderItemDetails;
 import converter.ProductDetails;
 import converter.ProductOrderJoin;
@@ -33,15 +34,15 @@ public class Return extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        Integer orderId = Integer.parseInt(request.getParameter("orderId"));
         List<ProductDetails> productList = productBean.getAllProducts();
         List<ProductOrderJoin> productOrderJoin = new ArrayList<>();
         List<OrderItemDetails> orderItemList = ordersBean.getAllOrderItems();
 
-        Integer orderId = Integer.parseInt(request.getParameter("orderId"));
         System.out.println("console-log");
         System.out.println(orderId);
         if (ordersBean.findOrderById(orderId)) {
-
+            OrderDetails orderDetails = ordersBean.getOrderById(orderId);
             for (OrderItemDetails orderItem : orderItemList) {
                 if (orderId.equals(orderItem.getIdOrder())) {
                     int productIndex = productList.indexOf(new ProductDetails(orderItem.getIdProduct()));
@@ -52,7 +53,8 @@ public class Return extends HttpServlet {
             System.out.println(productOrderJoin);
             request.setAttribute("activated", true);
             request.setAttribute("orderItemList", productOrderJoin);
-            request.getRequestDispatcher("/WEB-INF/pages/returns.jsp").forward(request, response);
+            request.setAttribute("orderDetails", orderDetails);
         }
+        request.getRequestDispatcher("/WEB-INF/pages/returns.jsp").forward(request, response);
     }
 }

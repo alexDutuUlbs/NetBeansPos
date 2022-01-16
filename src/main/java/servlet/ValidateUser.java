@@ -45,7 +45,7 @@ public class ValidateUser extends HttpServlet {
 
         userBean.updatePosition(userId, position);
 
-        response.sendRedirect(request.getContextPath() + "/Customers");
+        response.sendRedirect(request.getContextPath() + "/Users");
     }
 
     @Override

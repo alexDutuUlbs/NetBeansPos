@@ -12,8 +12,8 @@ import javax.ejb.EJB;
 
 @DeclareRoles({"AdminRole", "ClientRole", "ManagerRole", "InvalidRole"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole", "ManagerRole"}))
-@WebServlet(name = "Customers", value = "/Customers")
-public class Customers extends HttpServlet {
+@WebServlet(name = "Users", value = "/Users")
+public class Users extends HttpServlet {
     
     @EJB
     UserBean userBean;
@@ -23,7 +23,7 @@ public class Customers extends HttpServlet {
         List<UserDetails> users=userBean.getAllUsers();
         System.out.println(users);
         request.setAttribute("users", users);
-        request.getRequestDispatcher("/WEB-INF/pages/customers.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
     }
 
     @Override

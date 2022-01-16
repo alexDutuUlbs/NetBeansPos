@@ -37,8 +37,11 @@ public class NewOrder extends HttpServlet {
 
         //System.out.println("orderBean//////////////////////////"+ordersBean.newOrder(1));
         Integer userId = (Integer) request.getSession().getAttribute("userId");
-        int orderId = ordersBean.newOrderId(userId);       //get user id
-
+        
+        
+        Double total=Double.parseDouble(request.getParameter("total"));
+        int orderId = ordersBean.newOrderId(userId, total);       //get user id
+        
         String orderRaw = request.getParameter("order");
         List<OrderItemDetails> orderList = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(orderRaw, "#");

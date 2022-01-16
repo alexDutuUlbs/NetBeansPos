@@ -63,13 +63,13 @@
                             <c:if test="${pageContext.request.isUserInRole('AdminRole')}">
                                 <li>
                                     <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </a>
                                     <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                         <li class="w-100">
-                                            <a href="${pageContext.request.contextPath}/Customers" class="nav-link px-0"> <span class="d-none d-sm-inline">Customers</span></a>
+                                            <a href="${pageContext.request.contextPath}/Users" class="nav-link px-0"> <span class="d-none d-sm-inline">Users</span></a>
                                         </li>
                                         <li>
-                                            <a href="${pageContext.request.contextPath}/AddCustomer" class="nav-link px-0"> <span class="d-none d-sm-inline">Add Customers</span></a>
+                                            <a href="${pageContext.request.contextPath}/AddUser" class="nav-link px-0"> <span class="d-none d-sm-inline">Add Users</span></a>
                                         </li>
                                     </ul>
                                 </li>
