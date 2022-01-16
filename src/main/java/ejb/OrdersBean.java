@@ -115,4 +115,31 @@ public class OrdersBean {
         Product product= em.find(Product.class, idProduct);
         product.setQuantity(product.getQuantity()-quantity);
     }
+
+    public boolean findOrderById(Integer orderId) {
+        Orders order=em.find(Orders.class, orderId);
+        if(order!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public void returnOrder(Integer orderId) {
+        Orders order=em.find(Orders.class, orderId);
+        List<OrderItem> orderList;
+        try {
+            Query query = em.createQuery("SELECT u FROM OrderItem u");
+            orderList = (List<OrderItem>) query.getResultList();
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
+        for(OrderItem orderItem: orderList){
+            if(orderItem.getIdOrder().equals(order.getId())){
+                updateStock(orderItem.getIdProduct(), -(orderItem.getQuantity()));
+                em.remove(orderItem);
+            }
+        }
+        em.remove(order);
+    }
 }

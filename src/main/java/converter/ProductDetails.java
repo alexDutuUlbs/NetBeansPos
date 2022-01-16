@@ -5,6 +5,7 @@
  */
 package converter;
 
+import entity.Product;
 import java.util.Objects;
 
 /**
@@ -26,7 +27,14 @@ public class ProductDetails {
         this.quantity = quantity;
         this.price = price;
     }
-
+    
+    public ProductDetails(Product product) {
+        this.id = product.getId();
+        this.name = product.getName();
+        this.quantity = product.getQuantity();
+        this.price = product.getPrice();
+    }
+    
     public ProductDetails(Integer id) {
         this.id = id;
     }
@@ -50,7 +58,7 @@ public class ProductDetails {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 79 * hash + Objects.hashCode(this.id);
         return hash;
     }
 

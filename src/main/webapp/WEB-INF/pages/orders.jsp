@@ -3,12 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 
+
 </head>
 <t:pageTemplate pageTitle="Orders">
 
     <div class="container-lg">
         <h1>Test</h1>
-        <div id="accordion">
+        <div id="accordion w-75">
             <c:forEach var="order" items="${orderIdList}" varStatus="status">
                 <div class="card">
                     <div class="card-header" id="card_id${order.id}">
@@ -47,9 +48,7 @@
                     </div>
                 </div>
             </c:forEach>
-
         </div>
-
     </div>
     <script>
         $(document).ready(function () {

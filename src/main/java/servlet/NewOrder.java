@@ -13,16 +13,15 @@ import java.util.List;
 import java.util.StringTokenizer;
 import javax.annotation.security.DeclareRoles;
 import javax.ejb.EJB;
-import javax.inject.Inject;
 
-@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
+@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole", "InvalidRole"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole", "ClientRole", "ManagerRole"}))
 @WebServlet(name = "NewOrder", value = "/NewOrder")
 public class NewOrder extends HttpServlet {
 
     @EJB
     ProductBean productBean;
-    
+
     @EJB
     OrdersBean ordersBean;
 
@@ -35,25 +34,25 @@ public class NewOrder extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
         //System.out.println("orderBean//////////////////////////"+ordersBean.newOrder(1));
-        
-        Integer orderId=ordersBean.newOrderId(1);       //get user id
-        
-        String orderRaw=request.getParameter("order");
-        List<OrderItemDetails> orderList=new ArrayList<>();
-        StringTokenizer st=new StringTokenizer(orderRaw, "#");
-        while(st.hasMoreTokens()){
-            Integer productId=Integer.parseInt(st.nextToken());
-            Integer quantity=Integer.parseInt(st.nextToken());
+        Integer userId = (Integer) request.getSession().getAttribute("userId");
+        int orderId = ordersBean.newOrderId(userId);       //get user id
+
+        String orderRaw = request.getParameter("order");
+        List<OrderItemDetails> orderList = new ArrayList<>();
+        StringTokenizer st = new StringTokenizer(orderRaw, "#");
+        while (st.hasMoreTokens()) {
+            Integer productId = Integer.parseInt(st.nextToken());
+            Integer quantity = Integer.parseInt(st.nextToken());
             orderList.add(new OrderItemDetails(orderId, productId, quantity));
         }
-        boolean success=ordersBean.addNewOrder(orderList);
-        if(success){
-            
-             response.sendRedirect(request.getContextPath() + "/Orders");
-        }else{
-             response.sendRedirect(request.getContextPath() + "/NewOrder");
+        boolean success = ordersBean.addNewOrder(orderList);
+        if (success) {
+
+            response.sendRedirect(request.getContextPath() + "/Orders");
+        } else {
+            response.sendRedirect(request.getContextPath() + "/NewOrder");
         }
     }
 }

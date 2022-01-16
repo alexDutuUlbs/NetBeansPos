@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author adutu
  */
-@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
+@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole", "InvalidRole"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole", "ManagerRole"}))
 @WebServlet(name = "AddProduct", urlPatterns = {"/AddProduct"})
 public class AddProduct extends HttpServlet {

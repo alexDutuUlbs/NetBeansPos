@@ -7,6 +7,7 @@ package servlet;
 import converter.UserDetails;
 import ejb.UserBean;
 import java.io.IOException;
+import java.util.List;
 import javax.annotation.security.DeclareRoles;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -23,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @DeclareRoles({"AdminRole", "ClientRole", "ManagerRole", "InvalidRole"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"ManagerRole"}))
-@WebServlet(name = "EditUser", urlPatterns = {"/EditUser"})
-public class EditUser extends HttpServlet {
+@WebServlet(name = "Pending", urlPatterns = {"/Pending"})
+public class Pending extends HttpServlet {
 
     @EJB
     UserBean userBean;
@@ -32,28 +33,20 @@ public class EditUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UserDetails user = userBean.getUserById(Integer.parseInt(request.getParameter("id")));
-        request.setAttribute("user", user);
-        request.getRequestDispatcher("/WEB-INF/pages/editUser.jsp").forward(request, response);
+        List<UserDetails> userDetails = userBean.getAllUsers();
+        request.setAttribute("users", userDetails);
+        request.getRequestDispatcher("/WEB-INF/pages/pending.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        String position = request.getParameter("position");
-        String userId = request.getParameter("user_id");
 
-        userBean.updateUser(userId, username, password, email, position);
-
-        response.sendRedirect(request.getContextPath() + "/Customers");
     }
 
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Pending v1.0";
     }// </editor-fold>
 
 }

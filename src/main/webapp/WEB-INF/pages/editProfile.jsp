@@ -9,5 +9,5 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <t:pageTemplate pageTitle="Edit Profile">
-
+    <h1>Unimplemented Edit Profile</h1>
 </t:pageTemplate>

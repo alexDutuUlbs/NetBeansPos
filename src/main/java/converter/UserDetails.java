@@ -5,6 +5,8 @@
  */
 package converter;
 
+import entity.User;
+
 public class UserDetails {
 
     private Integer id;
@@ -23,6 +25,14 @@ public class UserDetails {
         this.username = username;
         this.password = password;
         this.position = position;
+    }
+
+    public UserDetails(User user) {
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.position = user.getPosition();
     }
 
     public Integer getId() {

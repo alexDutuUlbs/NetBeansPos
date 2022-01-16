@@ -33,9 +33,7 @@
                     <div class="col-8">
                         <select id="position" name="position" placeholder="position" class="form-control" required>
                             <option value="">Chose...</option>
-                            <option value="ADMINISTRATOR">Administrator</option>
-                            <option value="CLIENT">Client</option>
-                            <option value="MANAGER">Manager</option>
+                            <option value="Invalid">Invalid</option>
                         </select> 
                         <div class="invalid-feedback">
                             Please select a position.

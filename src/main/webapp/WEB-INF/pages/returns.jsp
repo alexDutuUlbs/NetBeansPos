@@ -10,12 +10,12 @@
     <div class="container-lg">
         <div class="row">
             <div class="col-4">
-                <form method="POST" action="${pageContext.request.contextPath}/Returns">
+                <form method="POST" action="${pageContext.request.contextPath}/Return">
                     <div class="form-group row">
                         <label for="orderId" class="col-4 col-form-label">OrderId</label>
                         <div class="col-8">
                             <div class="input-group">
-                                <input id="orderId" name="orderId" type="text" class="form-control" required="required">
+                                <input id="orderId" name="orderId" type="number" class="form-control" required="required">
                             </div>
                         </div>
                     </div>
@@ -36,21 +36,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="product" items="${orderDetails}" varStatus="status">
-                            <c:if test="${order.id eq product.orderId }">
-                                <tr>
-                                    <td>${product.productNamename}</td>
-                                    <td>${product.price}</td>
-                                    <td>${product.getOrderQuantity()}</td>
-                                </tr>
-                            </c:if>
+                        <tr>
+                            <td>${product.orderId}</td>
+                        </tr>
+                        <c:forEach var="product" items="${orderItemList}" varStatus="status">
+                            <tr>
+                                <td>${product.productNamename}</td>
+                                <td>${product.price}</td>
+                                <td>${product.getOrderQuantity()}</td>
+                            </tr>
                         </c:forEach>
                     </tbody>
                     <tfoot>
                     </tfoot>
                 </table>
-                <c:if>
-                    
+                <c:if test="${pageContext.request.getAttribute('activated')}">
+                    <form action="${pageContext.request.contextPath}/DeleteOrder" method="POST">
+                        <input type="number" id="orderIdConfirm" name="orderIdConfirm" value="Confirm order id">
+                        <button name="submit" type="submit" class="btn btn-primary">Return Order</button>
+                    </form>
                 </c:if>
             </div>
         </div>
