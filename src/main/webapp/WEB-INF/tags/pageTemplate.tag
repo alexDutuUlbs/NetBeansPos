@@ -87,7 +87,7 @@
                                         <a class="dropdown-item" href="${pageContext.request.contextPath}/Pending">Pending</a>
                                     </li>
                                 </c:if>
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/EditProfile">Profile</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/Profile">Profile</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

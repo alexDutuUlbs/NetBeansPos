@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/J2EE/EJB30/StatelessEjbClass.java to edit this template
- */
+
 package ejb;
 
 import entity.User;
@@ -114,5 +111,12 @@ public class UserBean {
         LOG.info("updatePosition");
         User user = em.find(User.class, Integer.parseInt(userId));
         user.setPosition(position);
+    }
+
+     public void updateProfile(String userId, String username, String email) {
+        LOG.info("updateProfile");
+        User user = em.find(User.class, Integer.parseInt(userId));
+        user.setEmail(email);
+        user.setUsername(username);
     }
 }

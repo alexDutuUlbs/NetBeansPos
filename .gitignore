@@ -1,2 +1,6 @@
 /target/
 /nbproject/
+target/classes/ejb/UserBean.class
+target/maven-archiver/pom.properties
+target/NextGenPos-1.0-SNAPSHOT.war
+target/NextGenPos-1.0-SNAPSHOT/WEB-INF/classes/ejb/UserBean.class

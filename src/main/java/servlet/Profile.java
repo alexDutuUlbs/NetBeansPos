@@ -7,7 +7,6 @@ package servlet;
 import converter.UserDetails;
 import ejb.UserBean;
 import java.io.IOException;
-import java.util.List;
 import javax.annotation.security.DeclareRoles;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -24,29 +23,32 @@ import javax.servlet.http.HttpServletResponse;
  */
 @DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"ManagerRole"}))
-@WebServlet(name = "Pending", urlPatterns = {"/Pending"})
-public class Pending extends HttpServlet {
+@WebServlet(name = "Profile", urlPatterns = {"/Profile"})
+public class Profile extends HttpServlet {
 
     @EJB
     UserBean userBean;
-
+   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<UserDetails> userDetails = userBean.getAllUsers();
-        request.setAttribute("users", userDetails);
-        request.getRequestDispatcher("/WEB-INF/pages/pending.jsp").forward(request, response);
+        Integer userId = userBean.getUserIdByName(request.getRemoteUser());       
+        UserDetails user = userBean.getUserById(userId);
+        request.setAttribute("user", user);
+        request.getRequestDispatcher("/WEB-INF/pages/profile.jsp").forward(request, response);
     }
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+      
     }
 
+    
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

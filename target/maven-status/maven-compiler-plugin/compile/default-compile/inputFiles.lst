@@ -9,23 +9,39 @@ C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\converter\Pr
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Login.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\ValidateUser.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\EditUser.java
+<<<<<<< HEAD
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Users.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\AddUser.java
+=======
+>>>>>>> Vlad-dev
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\converter\UserDetails.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\converter\ProductOrderJoin.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Products.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Logout.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\entity\Product.java
+<<<<<<< HEAD
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\util\PriceUtil.java
+=======
+>>>>>>> Vlad-dev
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Dashboard.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\DeleteOrder.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\EditProfile.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\ejb\OrdersBean.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Orders.java
+<<<<<<< HEAD
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\com\pos\nextgenpos\resources\JavaEE8Resource.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\util\PasswordUtil.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\ejb\UserBean.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\entity\OrderItem.java
+=======
+C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Customers.java
+C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\com\pos\nextgenpos\resources\JavaEE8Resource.java
+C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\util\PasswordUtil.java
+C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\AddCustomer.java
+C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\ejb\UserBean.java
+C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\entity\OrderItem.java
+C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\home.java
+>>>>>>> Vlad-dev
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Return.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\servlet\Pending.java
 C:\Users\adutu\Documents\NetBeansProjects\NetBeansPos\src\main\java\converter\OrderItemDetails.java

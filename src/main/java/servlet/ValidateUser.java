@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
-@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole", "InvalidRole"})
+@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"ManagerRole"}))
 @WebServlet(name = "ValidateUser", urlPatterns = {"/ValidateUser"})
 public class ValidateUser extends HttpServlet {
@@ -40,10 +40,13 @@ public class ValidateUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
         String position = request.getParameter("position");
         String userId = request.getParameter("user_id");
 
-        userBean.updatePosition(userId, position);
+        userBean.updateUser(userId, username, password, email, position);
 
         response.sendRedirect(request.getContextPath() + "/Users");
     }

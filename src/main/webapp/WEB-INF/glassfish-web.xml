@@ -16,10 +16,6 @@
     <role-name>ManagerRole</role-name>
     <group-name>MANAGER</group-name>
   </security-role-mapping>
-  <security-role-mapping>
-    <role-name>InvalidRole</role-name>
-    <group-name>INVALID</group-name>
-  </security-role-mapping>
   <class-loader delegate="true"/>
   <jsp-config>
     <property name="keepgenerated" value="true">

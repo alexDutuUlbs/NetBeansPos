@@ -7,11 +7,9 @@ package servlet;
 
 import ejb.OrdersBean;
 import java.io.IOException;
-import javax.annotation.security.DeclareRoles;
+import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.HttpConstraint;
-import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +19,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author adutu
  */
-@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole", "InvalidRole"})
-@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole", "ClientRole", "ManagerRole"}))
 @WebServlet(name = "DeleteOrder", urlPatterns = {"/DeleteOrder"})
 public class DeleteOrder extends HttpServlet {
     
@@ -38,6 +34,8 @@ public class DeleteOrder extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Integer orderId = Integer.parseInt(request.getParameter("orderIdConfirm"));
+        System.out.println("console-log-delete");
+        System.out.println(orderId);
         ordersBean.returnOrder(orderId);
         response.sendRedirect(request.getContextPath() + "/Orders");
     }
