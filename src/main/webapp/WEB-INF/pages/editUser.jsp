@@ -17,9 +17,6 @@
         <select class="custom-select d-block w-100" name="position" id="position" required>
             <option value="">Chose...</option>
             <option value="INVALID">Invalid</option>
-            <option value="CLIENT">Client</option>
-            <option value="ADMINISTRATOR">Administrator</option>
-            <option value="MANAGER">Manager</option>
         </select>
         <input type="hidden" name="user_id" id="user_id" value="${user.id}"/>
         <hr>

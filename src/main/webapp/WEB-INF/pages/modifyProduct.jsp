@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<t:pageTemplate pageTitle="Edit User">
+<t:pageTemplate pageTitle="Modify Product">
     <form class="needs-validation w-25" novalidate method="POST" action="${pageContext.request.contextPath}/ModifyProduct">
         <label for="productName">Name</label>
         <input type ="text" class="form-control" name="productName" id="productName" placeholder="productName" required value="${product.name}"/>
