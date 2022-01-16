@@ -109,4 +109,11 @@ public class UserBean {
             return null;
         }
     }
+
+    public void updateProfile(String userId, String username, String email) {
+        LOG.info("updateProfile");
+        User user = em.find(User.class, Integer.parseInt(userId));
+        user.setEmail(email);
+        user.setUsername(username);
+    }
 }
