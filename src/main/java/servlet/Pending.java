@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
-@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
+@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole", "InvalidRole"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"ManagerRole"}))
 @WebServlet(name = "Pending", urlPatterns = {"/Pending"})
 public class Pending extends HttpServlet {
@@ -46,7 +46,7 @@ public class Pending extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Pending v1.0";
     }// </editor-fold>
 
 }

@@ -5,7 +5,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.annotation.security.DeclareRoles;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
-@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
+@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole", "InvalidRole"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole", "ClientRole", "ManagerRole"}))
 @WebServlet(name = "EditProfile", urlPatterns = {"/EditProfile"})
 public class EditProfile extends HttpServlet {

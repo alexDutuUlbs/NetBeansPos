@@ -11,9 +11,6 @@
 <t:pageTemplate pageTitle="Validate User">
     <c:if test="${pageContext.request.isUserInRole('ManagerRole')}">
         <form class="needs-validation w-25" novalidate method="POST" action="${pageContext.request.contextPath}/ValidateUser">
-            <input type ="hidden" class="form-control" name="username" id="username" placeholder="Username" required value="${userVal.username}"/>
-            <input type="hidden" class="form-control" name="password" id="password" placeholder="Password" required value=""/>
-            <input type="hidden" class="form-control" name="email" id="email" placeholder="Email" required value="${userVal.email}"/>
             <label for="position">Position</label>
             <select class="custom-select d-block w-100" name="position" id="position" required>
                 <option value="">Chose...</option>

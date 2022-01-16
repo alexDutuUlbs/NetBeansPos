@@ -5,15 +5,17 @@ import converter.ProductDetails;
 import converter.ProductOrderJoin;
 import ejb.OrdersBean;
 import ejb.ProductBean;
-import entity.OrderItem;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.security.DeclareRoles;
 import javax.ejb.EJB;
 
+@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole", "InvalidRole"})
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole", "ClientRole", "ManagerRole"}))
 @WebServlet(name = "Return", value = "/Return")
 public class Return extends HttpServlet {
 

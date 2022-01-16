@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 import javax.annotation.security.DeclareRoles;
 import javax.ejb.EJB;
 
-@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
+@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole", "InvalidRole"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole", "ClientRole", "ManagerRole"}))
 @WebServlet(name = "NewOrder", value = "/NewOrder")
 public class NewOrder extends HttpServlet {

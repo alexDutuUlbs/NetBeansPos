@@ -109,4 +109,10 @@ public class UserBean {
             return null;
         }
     }
+
+    public void updatePosition(String userId, String position) {
+        LOG.info("updatePosition");
+        User user = em.find(User.class, Integer.parseInt(userId));
+        user.setPosition(position);
+    }
 }

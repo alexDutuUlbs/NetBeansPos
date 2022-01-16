@@ -7,7 +7,6 @@ package servlet;
 
 import ejb.UserBean;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.annotation.security.DeclareRoles;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -18,8 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole"})
-//@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole","ManagerRole"}))
+@DeclareRoles({"AdminRole", "ClientRole", "ManagerRole", "InvalidRole"})
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"AdminRole","ManagerRole"}))
 @WebServlet(name = "AddCustomer", urlPatterns = {"/AddCustomer"})
 public class AddCustomer extends HttpServlet {
 
@@ -38,7 +37,7 @@ public class AddCustomer extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        String position = "INVALID";
+        String position = request.getParameter("position");
         userBean.addUser(email, username, password, position);
         response.sendRedirect(request.getContextPath() + "/Customers");
     }
