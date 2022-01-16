@@ -21,6 +21,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import util.PriceUtil;
 
 /**
  *
@@ -57,10 +58,10 @@ public class ProductBean {
 
     public void addProduct(String name, Integer quantity, Double price) {
         LOG.info("addProduct");
-
+        
         Product product = new Product();
         product.setName(name);
-        product.setPrice(price);
+        product.setPrice(PriceUtil.calculateVAT(price));
         product.setQuantity(quantity);
 
         em.persist(product);

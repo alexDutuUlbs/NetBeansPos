@@ -15,8 +15,12 @@ import javax.persistence.PersistenceContext;
 import entity.Orders;
 import entity.Product;
 import entity.User;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import javax.ejb.EJBException;
 import javax.persistence.Query;
 
@@ -56,9 +60,12 @@ public class OrdersBean {
         return orderList;
     }
 
-    public Integer newOrderId(Integer idCashier) {
+    public Integer newOrderId(Integer idCashier, Double total) {
         Orders order = new Orders();
         order.setId_cashier(idCashier);
+        Calendar date=Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+        order.setDate(date);
+        order.setTotal(total);
 
         em.persist(order);
         List<OrderDetails> orderList=getAllOrderIds();
@@ -95,10 +102,14 @@ public class OrdersBean {
         List<OrderDetails> detailsList = new ArrayList<>();
         OrderDetails orderItem;
         for (Orders order : orders) {
-            orderItem = new OrderDetails(order.getId(), order.getId_cashier());
+            orderItem = new OrderDetails(order.getId(), order.getId_cashier(), order.getDate(), order.getTotal());
             detailsList.add(orderItem);
         }
         return detailsList;
+    }
+    
+    private OrderDetails orderDetailsConverter(Orders order){
+        return new OrderDetails(order.getId(), order.getId_cashier(), order.getDate(), order.getTotal());
     }
 
     private List<OrderItemDetails> orderItemDetailsConverter(List<OrderItem> orders) {
@@ -123,6 +134,11 @@ public class OrdersBean {
         }else{
             return false;
         }
+    }
+    
+    public OrderDetails getOrderById(Integer orderId){
+        Orders order=em.find(Orders.class, orderId);
+        return orderDetailsConverter(order);
     }
 
     public void returnOrder(Integer orderId) {

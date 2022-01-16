@@ -46,6 +46,16 @@
                                 <td>${product.getOrderQuantity()}</td>
                             </tr>
                         </c:forEach>
+                        <tr>
+                            <th class="th-sm">Total</th>
+                            <th class="th-sm">Date</th>
+                            <th class="th-sm">Id</th>
+                        </tr>
+                        <tr>
+                            <td>${orderDetails.total}</td>
+                            <td>${orderDetails.getDateAsString()}</td>
+                            <td class="th-sm">${orderDetails.id}</td>
+                        </tr>
                     </tbody>
                     <tfoot>
                     </tfoot>

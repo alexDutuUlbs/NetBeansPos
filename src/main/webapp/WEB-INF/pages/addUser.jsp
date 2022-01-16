@@ -11,7 +11,7 @@
 <t:pageTemplate pageTitle="Add User">
     <div class="container-sm">
         <div class="col-md-3">
-            <form method="POST" action="${pageContext.request.contextPath}/AddCustomer">
+            <form method="POST" action="${pageContext.request.contextPath}/AddUser">
                 <div class="form-group row">
                     <label for="username" class="col-4 col-form-label">Username</label> 
                     <div class="col-8">
@@ -33,7 +33,7 @@
                     <div class="col-8">
                         <select id="position" name="position" placeholder="position" class="form-control" required>
                             <option value="">Chose...</option>
-                            <option value="Invalid">Invalid</option>
+                            <option value="INVALID">Invalid</option>
                         </select> 
                         <div class="invalid-feedback">
                             Please select a position.

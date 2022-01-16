@@ -48,7 +48,7 @@ public class EditUser extends HttpServlet {
 
         userBean.updateUser(userId, username, password, email, position);
 
-        response.sendRedirect(request.getContextPath() + "/Customers");
+        response.sendRedirect(request.getContextPath() + "/Users");
     }
 
     @Override
